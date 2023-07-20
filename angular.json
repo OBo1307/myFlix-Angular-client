@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/https://obo1307.github.io/myFlix-Angular-client/",
             "outputPath": "dist/my-flix-angular-client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -52,7 +53,7 @@
             },
             "development": {
               "buildOptimizer": false,
-              "optimization": false,
+              "optimization": true,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
