@@ -1,0 +1,23 @@
+$backgroundColor: #0f120e;
+$cardColor: #1a1d1a;
+$buttonMainColor: #3c50fa;
+$textColor: #fff;
+$textSubtitleColor: #cbcaca;
+$boxShadowColor: #4c4c4c;
+
+* {
+  box-sizing: border-box;
+}
+.mat-mdc-card-header {
+  margin: 1vh;
+  font-size: larger;
+  font-weight: 500;
+}
+
+.button-container {
+  padding: 0 16px;
+}
+button {
+  color: $textColor !important;
+  background-color: $buttonMainColor !important;
+}

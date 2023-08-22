@@ -8,25 +8,48 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss']
+  selector: 'app-favorite-movie-card',
+  templateUrl: './favorite-movie-card.component.html',
+  styleUrls: ['./favorite-movie-card.component.scss'],
 })
-export class MovieCardComponent {
+export class FavoriteMovieCardComponent {
   movies: any[] = [];
   favorites: any[] = [];
+  listOfFavoriteMovies: any[] = [];
 
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
-    ) { }
-
+  ) {}
   ngOnInit(): void {
     this.getMovies();
     this.getFavoriteMovies();
+    this.getListOfFavorite();
   }
 
+  async getListOfFavorite() {
+    let allMovies = await this.getMovies();
+    let favoriteMoviesID = await this.getFavoriteMovies()
+    console.log(allMovies);
+    console.log(favoriteMoviesID);
+    // this.listOfFavoriteMovies = this.movies.filter((m) => {
+    //   this.favorites.includes(m.id);
+    // });
+    // console.log(this.listOfFavoriteMovies);
+    // return this.listOfFavoriteMovies;
+  }
+
+  getMovies(): void {
+    // We make API call to get full list of movies
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      // we set movies variable to keep what we get as a response from API call
+      this.movies = resp;
+      console.log(this.movies);
+
+      return this.movies;
+    });
+  }
   getFavoriteMovies(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.favorites = resp.FavoriteMovies;
@@ -54,17 +77,9 @@ export class MovieCardComponent {
     this.fetchApiData.deleteMovieFromFavorites(id).subscribe((result) => {
       console.log(result);
       this.snackBar.open('Movie deleted from favorites', 'OK', {
-        duration: 2000,
+        duration: 4000,
       });
       this.ngOnInit();
-    });
-  }
-
-  getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(this.movies);
-      return this.movies;
     });
   }
 
@@ -75,6 +90,8 @@ export class MovieCardComponent {
         Name: name,
         Description: description,
       },
+      // panelClass: 'genre-dialog-background',
+      // width: '400px',
     });
   }
 
@@ -94,7 +111,7 @@ export class MovieCardComponent {
     movieDirector: string,
     movieGenre: string,
     movieDescription: string,
-    movieImagePath: string
+    movieImageURL: string
   ): void {
     this.dialog.open(MovieSynopsisComponent, {
       data: {
@@ -102,7 +119,7 @@ export class MovieCardComponent {
         Director: movieDirector,
         Genre: movieGenre,
         Description: movieDescription,
-        Image: movieImagePath,
+        Image: movieImageURL,
       },
     });
   }

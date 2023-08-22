@@ -1,0 +1,56 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+</style>
+<app-nav-bar></app-nav-bar>
+<div style="display: flex;" class="user-profile">
+
+    <div class="top-container">
+        <div class="user-info-header">Profile of {{user.Username}}</div>
+        <div><button mat-raised-button (click)="deleteUser()" class="delete-button">
+                <mat-icon>delete_forever</mat-icon>
+                Delete account
+            </button>
+        </div>
+    </div>
+
+    <div class="user-profile-cards">
+        <mat-card class="user-info-card">
+            <mat-card-header>
+                <mat-card-title>User information:</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div><span>Username</span>: {{user.Username}}</div>
+                <div><span>Email</span>: {{user.Email}}</div>
+                <div><span>Birthday</span>: {{user.Birthday | date:'longDate'}} </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="user-update-card">
+            <mat-card-header class="update-header">
+                <mat-card-title>Update user information</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="update-card">
+                <form class="update-input-container">
+                    <mat-form-field class="update-input">
+                        <input matInput [(ngModel)]="updateUser.Username" placeholder="Username" type="text"
+                            name="Username" required>
+                    </mat-form-field>
+                    <mat-form-field class="update-input">
+                        <input matInput [(ngModel)]="updateUser.Password" placeholder="Password" type="password"
+                            name="Password" required>
+                    </mat-form-field >
+                    <mat-form-field class="update-input">
+                        <input matInput [(ngModel)]="updateUser.Email" placeholder="Email" value={{user.Email}}
+                            type="email" name="Email" required>
+                    </mat-form-field>
+                    <mat-form-field class="update-input">
+                        <input matInput [(ngModel)]="updateUser.Birthday" placeholder="Birthday" type="date"
+                            name="Birthday">
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions class="button-container">
+                <button mat-raised-button (click)="updateUserData()" color="primary">Update</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

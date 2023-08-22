@@ -23,6 +23,7 @@ $boxShadowColor: #4c4c4c;
 mat-card {
   display: flex;
   flex-direction: column;
+  // height: 50vh;
   width: 300px;
   background-color: $cardColor;
   color: $textColor;
@@ -31,8 +32,8 @@ mat-card {
 
 mat-card-header {
   height: 15%;
-  margin-top: 15px;
   margin-bottom: 5px;
+  margin-top: 15px;
 }
 mat-card-subtitle {
   color: $textSubtitleColor;
@@ -48,10 +49,27 @@ mat-card-actions {
   justify-content: space-between;
   margin-bottom: 5px;
 }
+
+.icon-button {
+  margin-right:10px;
+  padding: 0px;
+  background-color: #1A1D1A;
+  border: none;
+}
 mat-icon {
-  margin-right: 15px;
-  }
-  
+  margin: 0px !important;
+  color: #fff;
+}
+mat-icon:hover {
+  color: #e91e63;
+}
+
+mat-icon.is-favorite {
+  color: #e91e63;
+}
+mat-icon.is-favorite:hover {
+  color: #fff;
+}
 .mat-mdc-button:not(:disabled) {
-    color: $buttonMainColor;
+  color: $buttonMainColor;
 }

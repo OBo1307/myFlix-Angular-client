@@ -71,24 +71,27 @@ export class UserRegistrationService {
     }).pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // Making the api call for the update user endpoint
-  public updateUser(userDetails: any): Observable<any> {
-    const username = localStorage.getItem('user');
+  public updateUser(updateUserInfo: any): Observable<any> {
+    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + username, userDetails, {
+    return this.http
+      .put(`${apiUrl}users/${username}`, updateUserInfo, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
+        Authorization: `Bearer ${token}`,
       })
     }).pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // Making the api call for the delete user endpoint
   public deleteUser(): Observable<any> {
-    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + username, {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
+    const username = localStorage.getItem('username');
+    const deleteUserURL = `${apiUrl}users/${username}`;
+    
+    return this.http
+      .delete(`${apiUrl}users/${username}`, {
+        headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
-    }).pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // Making the api call for the get user favorite movies endpoint
   public getUserFavoriteMovies(): Observable<any> {
@@ -102,9 +105,13 @@ export class UserRegistrationService {
   }
   // Making the api call for the add movie to favorites endpoint
   public addMovieToFavorites(movieId: string): Observable<any> {
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + 'users/' + username + '/movies/' + movieId, {
+    return this.http
+      .post(
+        `${apiUrl}users/${username}/movies/${movieId}`,
+        { FavoriteMovie: movieId },
+        {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token,
       })
@@ -112,9 +119,10 @@ export class UserRegistrationService {
   }
   // Making the api call for the delete movie from favorites endpoint
   public deleteMovieFromFavorites(movieId: string): Observable<any> {
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    return this.http.delete(apiUrl + 'users/' + username + '/movies/' + movieId, {
+    return this.http
+    .delete(`${apiUrl}users/${username}/movies/${movieId}`, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token,
       })
