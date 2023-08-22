@@ -1,0 +1,75 @@
+$backgroundColor: #0f120e;
+$cardColor: #1a1d1a;
+$buttonMainColor: #5364f6;
+$textColor: #fff;
+$textSubtitleColor: #cbcaca;
+$boxShadowColor: #4c4c4c;
+
+* {
+  box-sizing: border-box;
+}
+
+.movies-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: 15px 15px;
+  margin: 30px;
+  justify-content: center;
+  background-color: $backgroundColor;
+  padding-block: 30px;
+}
+mat-card {
+  display: flex;
+  flex-direction: column;
+  // height: 50vh;
+  width: 300px;
+  background-color: $cardColor;
+  color: $textColor;
+  flex-shrink: 0;
+}
+
+mat-card-header {
+  height: 15%;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+mat-card-subtitle {
+  color: $textSubtitleColor;
+}
+img {
+  height: 70%;
+  object-fit: contain;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.icon-button {
+  margin-right:10px;
+  padding: 0px;
+  background-color: #1A1D1A;
+  border: none;
+}
+mat-icon {
+  margin: 0px !important;
+  color: #fff;
+}
+mat-icon:hover {
+  color: #e91e63;
+}
+
+mat-icon.is-favorite {
+  color: #e91e63;
+}
+mat-icon.is-favorite:hover {
+  color: #fff;
+}
+.mat-mdc-button:not(:disabled) {
+  color: $buttonMainColor;
+}

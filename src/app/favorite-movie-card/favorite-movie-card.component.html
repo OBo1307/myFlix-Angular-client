@@ -1,0 +1,29 @@
+<div style="display: flex;" class="movies-view">
+    <mat-card *ngFor="let movie of movies; let i=index;" >
+        <mat-card-header>
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img src={{movie.ImageURL}} alt="Poster for '{{movie.Title}}'" />
+        <!-- <mat-card-content>{{movie.Description}}</mat-card-content> -->
+        <mat-card-actions>
+            <div><button mat-button (click)="openGenreDetails(movie.Genre.Name, movie.Genre.Description)"
+                    color="primary">Genre</button>
+                <button mat-button
+                    (click)="openDirectorDetails(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)"
+                    color="primary">Director</button>
+                <button mat-button
+                    (click)="openMovieSynopsis(movie.Title, movie.Director.Name, movie.Genre.Name, movie.Description, movie.ImageURL)"
+                    color="primary">Synopsis</button>
+            </div>
+
+            <button class="icon-button" *ngIf="!isFavorite(movie._id)" (click)="addToFavorites(movie._id)">
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+            <button class="icon-button" *ngIf="isFavorite(movie._id)" (click)="deleteFromFavorites(movie._id)">
+                <mat-icon class="is-favorite">favorite</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
