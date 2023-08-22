@@ -1,0 +1,47 @@
+$backgroundColor: #0f120e;
+$cardColor: #1a1d1a;
+$buttonMainColor: #5364f6;
+$textColor: #dcdcdc;
+$textSubtitleColor: #cbcaca;
+$boxShadowColor: #4c4c4c;
+$boxShadow: 4px 1px 3px 5px rgba(255, 255, 255, 0.64);
+
+mat-card {
+  background-color: $cardColor;
+  // border: 2px solid $boxShadowColor;
+
+  color: $textColor;
+  max-width: 500px;
+  border: none !important;
+}
+
+mat-card-title {
+  padding: 20px 24px 0px 24px;
+  font-family: "Poppins", sans-serif;
+  font-size: larger;
+  font-weight: 600;
+}
+
+mat-dialog-content {
+  color: $textColor !important;
+  line-height: 18px !important;
+}
+
+mat-dialog-content div {
+    margin-bottom: 10px
+}
+
+mat-dialog-content span {
+    text-decoration: underline;
+    font-weight:600;
+    text-underline-offset: 4px;
+}
+
+mat-card-actions{
+  justify-content: flex-end;
+  padding: 0px 24px 20px 24px !important;
+}
+.genre-close-button {
+  background-color: $buttonMainColor;
+  color: $textColor;
+}
