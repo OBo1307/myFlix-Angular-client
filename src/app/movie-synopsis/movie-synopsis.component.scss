@@ -1,0 +1,69 @@
+$backgroundColor: #0f120e;
+$cardColor: #1a1d1a;
+$buttonMainColor: #5364f6;
+$textColor: #dcdcdc;
+$textSubtitleColor: #cbcaca;
+$boxShadowColor: #4c4c4c;
+$boxShadow: 4px 1px 3px 5px rgba(255, 255, 255, 0.64);
+
+mat-card {
+  background-color: $cardColor;
+  // border: 2px solid $boxShadowColor;
+
+  color: $textColor;
+  max-width: 1500px;
+  border: none !important;
+}
+
+mat-card-title {
+  padding: 20px 24px 0px 24px;
+  font-family: "Poppins", sans-serif;
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 15px;
+  color: $textColor !important;
+  line-height: 18px !important;
+}
+.movie-info-container {
+  min-width: 200px;
+  max-width: 350px;
+  flex-shrink: 1;
+}
+.movie-img-container {
+  width: 45%;
+  min-width: 100px;
+  max-width: 300px;
+  flex-shrink: 1;
+  //   object-fit: contain;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  //   object-fit: contain;
+}
+mat-dialog-content div {
+  margin-bottom: 10px;
+}
+
+mat-dialog-content span {
+  text-decoration: underline;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+mat-card-actions {
+  justify-content: flex-end;
+  padding: 0px 24px 20px 24px !important;
+}
+.director-close-button {
+  background-color: $buttonMainColor;
+  color: $textColor;
+}
